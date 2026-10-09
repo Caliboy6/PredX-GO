@@ -1,37 +1,37 @@
-# PredX GO — mobile app prototype
+# PredX GO — interactive prototype
 
-An interactive mobile first concept for voice assisted prediction markets. The browser demo presents the app inside a phone on desktop and fills the screen on mobile.
+A responsive PredX concept for natural language prediction markets. The desktop workspace draws on the information density and restrained trading layout of JTX, while preserving the existing mobile app flow.
 
-**Live demo:** https://predx-voice-concept.davidtheevanoob.chatgpt.site
+**Current published mobile demo:** https://predx-voice-concept.davidtheevanoob.chatgpt.site
 
 ## Run locally
 
-This is a static site with no build step or dependencies. Serve the repository directory over HTTP and open the local address:
+Serve the repository directory over HTTP and open `http://localhost:8000`:
 
 ```bash
 python3 -m http.server 8000
 ```
 
-Visit `http://localhost:8000`. Voice recognition and camera scanning depend on browser support and permissions. The public trending feed requires access to Polymarket's Gamma API.
+No build step or package install is required. The desktop workspace appears at browser widths of 900px and above. Choose **Mobile preview** to inspect the phone presentation. Narrow screens show the mobile app directly.
 
-## Explore the flow
+## Desktop experience
 
-1. Browse the homepage and open a market without logging in. Trending markets are sorted by 24 hour volume from the public Polymarket Gamma API; if the feed is unavailable, the app labels the separate sample markets clearly.
-2. Select **YES** or **NO**, enter an amount or say something like “YES with 25 USDC,” then continue. Login appears before order confirmation. The selected market, side and amount are preserved.
-3. Choose email or phone in the simulated login flow. Use the demo code `123456`, then preview Face ID or voice verification and create a demo wallet. The flow returns to the pending order.
-4. Confirm the simulated order, then inspect Positions, Wallet and Profile. The 5% USDC Idle Earns strategy, balances, P&L, guardrails and order history are illustrative.
-5. From Profile, preview scanning a QR shown on a computer to approve desktop sign in from a phone. This pairing does not create a real session.
+- Browse public trending Polymarket topics ordered by 24 hour volume. YES and NO prices are indicative snapshots. If the feed cannot load, sample markets are clearly labeled.
+- Search or speak a market, inspect implied probability, choose YES or NO, and enter an amount by typing, presets, or speech.
+- Before confirmation, the computer shows a QR for the PredX phone app to scan. **Preview phone approval** advances this browser demo; it does not establish an actual cross-device session.
+- Review the amount and guardrails, then simulate a position. Portfolio shows simulated P&L and a Close action; Wallet includes the illustrative Idle Earns strategy; Profile shows personal demo limits.
+
+## Mobile experience
+
+The phone app lets visitors browse markets before login. When they proceed to an order, it walks through email or phone entry, a simulated verification code (`123456`), and Face ID or voice verification. The order selection survives the login flow. The app also demonstrates wallet, positions, Idle Earns, guardrails, and phone side scanning of a computer QR.
 
 ## Prototype boundaries
 
-- The public Gamma feed provides indicative market price snapshots. It does **not** provide executable order quotes in this demo.
-- Orders, positions, balances, yield, spending limits, login, passkeys, Face ID, voiceprints, and QR pairing are browser only simulations. No real funds move, messages are sent, biometric data is captured, or wallet keys are generated.
-- Speech input uses the browser Speech Recognition API where available. Typed and button driven controls remain available.
-- This static prototype is for product review and UI development, not production trading or custody.
+The Gamma public market feed provides indicative market price snapshots, not executable quotes. Orders, positions, balances, yield, wallet creation, authentication, voiceprints, Face ID, and QR pairing are browser only simulations. No real funds move or biometric data is collected. The 5% USDC strategy is an illustrative design assumption, not a live yield or guarantee. Speech input uses the browser's Speech Recognition API where available; controls are also operable without speech.
 
 ## Files
 
-- `index.html` — phone presentation, app shell and icons
-- `app.js` — screens, interactions and public market feed
-- `mobile-extra.css` — additional mobile UI styles
-- `demo-pair.svg` — QR pairing demonstration asset
+- `index.html` — responsive shell, phone frame, and icons
+- `app.js` and `mobile-extra.css` — mobile app screens and market data
+- `desktop.js` and `desktop.css` — desktop trading workspace and phone approval preview
+- `demo-pair.svg` — demonstration QR displayed on the computer
